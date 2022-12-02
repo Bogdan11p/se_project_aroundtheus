@@ -15,7 +15,7 @@
   padding-left: 0;
 }
 
-.card__list-item-image {
+.card__image {
   width: 282px;
   height: 282px;
 }
@@ -28,9 +28,9 @@
   padding-top: 25px;
   align-items: center;
   justify-content: space-between;
-
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
+  list-style: none;
 }
 
 .card__like-button {
@@ -42,7 +42,7 @@
   padding-right: 0;
 }
 
-.card__list-item {
+.card {
   display: flex;
   flex-direction: column;
 }
