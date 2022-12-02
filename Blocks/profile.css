@@ -84,6 +84,9 @@
     margin-left: 19px;
     margin-right: 19px;
   }
+  .profile__title {
+    padding-right: 15.25px;
+  }
 }
 
 @media screen and (max-width: 800px) and (min-width: 481px) {
