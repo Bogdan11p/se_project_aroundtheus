@@ -7,7 +7,7 @@
   color: #000000;
 }
 
-.cards__list {
+.card__list {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 282px);
@@ -15,7 +15,7 @@
   padding-left: 0;
 }
 
-.card__image {
+.card__list-item-image {
   width: 282px;
   height: 282px;
 }
@@ -42,7 +42,7 @@
   padding-right: 0;
 }
 
-.cards__list-item {
+.card__list-item {
   display: flex;
   flex-direction: column;
 }
