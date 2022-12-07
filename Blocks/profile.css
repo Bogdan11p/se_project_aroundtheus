@@ -75,10 +75,11 @@
     flex-direction: column;
   }
   .profile__info {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-areas: "title button" "description description";
     width: 100%;
     justify-content: center;
+    flex-wrap: wrap;
   }
   .profile__info-description {
     width: 100%;
@@ -86,7 +87,7 @@
   }
   .profile__add-button {
     margin-left: 0;
-    width: 100%;
+    width: 282px;
   }
 
   .profile__title {
