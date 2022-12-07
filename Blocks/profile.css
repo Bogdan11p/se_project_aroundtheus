@@ -115,7 +115,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 480px) and (min-width: 321px) {
   .profile {
     flex-direction: column;
   }
@@ -156,15 +156,20 @@
 
   .profile__info-description {
     width: 100%;
+    font-size: 15px;
   }
 
   .profile__title {
     padding-right: 15px;
-    font-size: 35px;
+    font-size: 17px;
   }
   .profile__add-button {
     margin-left: 0;
     width: 35%;
     margin-right: 20px;
+  }
+
+  .profile__edit-button {
+    margin-left: 0;
   }
 }
