@@ -16,7 +16,7 @@
 }
 
 .page__footer {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -24,4 +24,32 @@
   color: #545454;
   padding-top: 67px;
   padding-bottom: 60px;
+}
+@media screen and (max-width: 320px) {
+  .page__footer {
+    font-size: 14px;
+    line-height: 17px;
+    text-align: left;
+    margin-left: 19px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .content {
+    margin-left: 19px;
+    margin-right: 19px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 481px) {
+  .page__content {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  @media screen and (max-width: 900px) {
+    .page__section {
+      margin: 0 20px;
+      width: calc(100% - 40px);
+    }
+  }
 }
