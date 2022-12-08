@@ -36,6 +36,7 @@
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   list-style: none;
+  padding-right: 20px;
 }
 
 .cards__like-button {
@@ -43,18 +44,23 @@
   border: none;
   width: 21px;
   height: 18px;
-  padding-left: 79px;
-  padding-right: 0;
+
+  padding-right: 10px;
 }
 
 .cards__like-button:hover {
   cursor: pointer;
+  opacity: 0.8;
 }
 
 .cards__name {
-  font-size: 22px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
   margin: 0;
-
+  max-width: 219px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
