@@ -13,6 +13,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  align-items: center;
 }
 
 .page__footer {
@@ -26,11 +27,29 @@
   padding-bottom: 60px;
 }
 @media screen and (max-width: 320px) {
+  .page__content {
+    max-width: 320px;
+    overflow-x: hidden;
+  }
+
   .page__footer {
     font-size: 14px;
     line-height: 17px;
     text-align: left;
     margin-left: 19px;
+    padding-top: 48px;
+    padding-bottom: 36px;
+  }
+}
+
+@media screen and (max-width: 480px) and (min-width: 321px) {
+  .page__content {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .page__footer {
+    font-size: 14px;
+    line-height: 17px;
   }
 }
 
@@ -44,6 +63,5 @@
 @media screen and (max-width: 1280px) and (min-width: 801px) {
   .page__section {
     margin: 0 20px;
-    width: calc(100% - 40px);
   }
 }

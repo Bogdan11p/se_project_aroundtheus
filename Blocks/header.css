@@ -11,4 +11,8 @@
     width: 126px;
     height: 24px;
   }
+
+  .header {
+    padding-bottom: 32px;
+  }
 }
