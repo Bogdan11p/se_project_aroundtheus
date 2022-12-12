@@ -29,10 +29,10 @@
 @media screen and (max-width: 320px) {
   .page__content {
     max-width: 320px;
-    overflow-x: hidden;
+    width: 100%;
   }
 
-  .page__footer {
+  .page__footer-name {
     font-size: 14px;
     line-height: 17px;
     text-align: left;
