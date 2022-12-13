@@ -85,8 +85,6 @@
     flex-direction: column;
   }
   .profile__info {
-    display: grid;
-    grid-template-areas: "title button" "description description";
     grid-template-columns: minmax(auto, 200px) auto;
     width: 100%;
     justify-content: center;
