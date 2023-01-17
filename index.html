@@ -66,76 +66,20 @@
           <button type="button" class="profile__add-button"></button>
         </section>
         <section class="cards page__section">
-          <ul class="cards__list">
-            <li class="cards__item">
-              <img
-                src="./images/yosemite-valley.png"
-                class="cards__image"
-                alt="yosemite"
-              />
-              <div class="cards__description">
-                <h2 class="cards__name">Yosemite Valley</h2>
-                <button type="button" class="cards__like-button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img
-                src="./images/lake-louise.png"
-                class="cards__image"
-                alt="Louise"
-              />
-              <div class="cards__description">
-                <h2 class="cards__name">Lake Louise</h2>
-                <button type="button" class="cards__like-button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img
-                src="./images/bald-mountains.png"
-                class="cards__image"
-                alt="Bald"
-              />
-              <div class="cards__description">
-                <h2 class="cards__name">Bald Mountains</h2>
-                <button type="button" class="cards__like-button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img
-                src="./images/latemar.png"
-                class="cards__image"
-                alt="Latemar"
-              />
-              <div class="cards__description">
-                <h2 class="cards__name">Latemar</h2>
-                <button type="button" class="cards__like-button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img
-                src="./images/vanoise-national-park.png"
-                class="cards__image"
-                alt="Vanoise"
-              />
-              <div class="cards__description">
-                <h2 class="cards__name">Vanoise National Park</h2>
-                <button type="button" class="cards__like-button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img
-                src="./images/lago-di-braies.png"
-                class="cards__image"
-                alt="Lago"
-              />
-              <div class="cards__description">
-                <h2 class="cards__name">Lago di Braies</h2>
-                <button type="button" class="cards__like-button"></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="cards__list"></ul>
         </section>
       </main>
+
+      <template id="card-template">
+        <li class="cards__item">
+          <img src="" class="cards__image" alt="" />
+          <div class="cards__description">
+            <h2 class="cards__name"></h2>
+            <button type="button" class="cards__like-button"></button>
+          </div>
+        </li>
+      </template>
+
       <footer class="page__footer page__section">
         <p class="page__footer-name">© 2022 Around The U.S.</p>
       </footer>
