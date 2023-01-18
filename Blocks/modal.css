@@ -40,7 +40,7 @@
   padding-bottom: 54px;
 }
 
-.modal__close-button {
+.modal__form_close-button {
   background-image: url(../images/Close\ Icon.svg);
   border: none;
   background-color: transparent;
@@ -54,14 +54,14 @@
   background-size: contain;
 }
 
-.form__fieldset {
+.modal__form_fieldset {
   border: none;
   margin-left: 0;
   margin-right: 0;
   padding: 0 0 0 0;
 }
 
-.form__input-name {
+.modal__form_input-name {
   margin-bottom: 30px;
   width: 358px;
   font-family: "Inter", Arial, sans-serif;
@@ -75,7 +75,7 @@
   border-bottom: 1px solid rgba(84, 84, 84, 0.2);
 }
 
-.form__input-description {
+.modal__form_input-description {
   margin-bottom: 48px;
   width: 358px;
   font-family: "Inter", Arial, sans-serif;
@@ -89,7 +89,7 @@
   border-bottom: 1px solid rgba(84, 84, 84, 0.2);
 }
 
-.form__save-button {
+.modal__form_save-button {
   width: 358px;
   height: 50.15px;
   background-color: #000;
@@ -117,20 +117,20 @@
     padding-bottom: 75px;
   }
 
-  .form___input-name {
+  .modal__form_input-name {
     width: 238px;
   }
 
-  .form__input-description {
+  .modal__form_input-description {
     width: 238px;
   }
 
-  .form__save-button {
+  .mdoal__form_save-button {
     width: 238px;
     border-radius: 2px;
   }
 
-  .modal__close-button {
+  .modal__form_close-button {
     position: absolute;
     bottom: calc(100% + 13px);
     left: calc(100% - 30px);
@@ -140,7 +140,7 @@
 }
 
 @media screen and (max-width: 630px) and (min-width: 321px) {
-  .modal__close-button {
+  .modal__form_close-button {
     position: absolute;
     bottom: calc(100% + 13px);
     left: calc(100% - 30px);
