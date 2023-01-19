@@ -73,6 +73,7 @@
   border-left: 0;
   border-right: 0;
   border-bottom: 1px solid rgba(84, 84, 84, 0.2);
+  padding: 0;
 }
 
 .modal__form_input-description {
@@ -87,6 +88,7 @@
   border-left: 0;
   border-right: 0;
   border-bottom: 1px solid rgba(84, 84, 84, 0.2);
+  padding: 0;
 }
 
 .modal__form_save-button {

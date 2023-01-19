@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   padding-top: 47.25px;
+  margin: 0;
 }
 
 .profile__image {
