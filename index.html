@@ -35,33 +35,7 @@
               class="profile__edit-button"
               id="profile-edit-button"
             ></button>
-            <div class="modal" id="profile-edit-modal">
-              <div class="modal__container">
-                <h1 class="modal__heading">Edit profile</h1>
-                <form class="modal__form">
-                  <fieldset class="modal__form_fieldset">
-                    <input
-                      class="modal__form_input-name"
-                      type="text"
-                      placeholder="Name"
-                    />
-                    <input
-                      class="modal__form_input-description"
-                      type="text"
-                      placeholder="Description"
-                    />
-                  </fieldset>
-                  <button class="modal__form_save-button" type="submit">
-                    Save
-                  </button>
-                </form>
-                <button
-                  class="modal__form_close-button"
-                  type="button"
-                  id="profile-close-button"
-                ></button>
-              </div>
-            </div>
+
             <p class="profile__info-description">Explorer</p>
           </div>
 
@@ -85,6 +59,27 @@
       <footer class="page__footer page__section">
         <p class="page__footer-name">© 2022 Around The U.S.</p>
       </footer>
+    </div>
+    <div class="modal" id="profile-edit-modal">
+      <div class="modal__container">
+        <h1 class="modal__heading">Edit profile</h1>
+        <form class="modal__form form">
+          <fieldset class="form__fieldset">
+            <input class="form__input-name" type="text" placeholder="Name" />
+            <input
+              class="form__input-description"
+              type="text"
+              placeholder="Description"
+            />
+          </fieldset>
+          <button class="form__save_button" type="submit">Save</button>
+        </form>
+        <button
+          class="form__close_button"
+          type="button"
+          id="profile-close-button"
+        ></button>
+      </div>
     </div>
     <script src="./scripts/index.js"></script>
   </body>
