@@ -127,12 +127,12 @@
     width: 238px;
   }
 
-  .form__save_button {
+  .form__save-button {
     width: 238px;
     border-radius: 2px;
   }
 
-  .form__close_button {
+  .container__close-button {
     position: absolute;
     bottom: calc(100% + 13px);
     left: calc(100% - 30px);
@@ -142,7 +142,7 @@
 }
 
 @media screen and (max-width: 630px) and (min-width: 321px) {
-  .form__close_button {
+  .container__close-button {
     position: absolute;
     bottom: calc(100% + 13px);
     left: calc(100% - 30px);
