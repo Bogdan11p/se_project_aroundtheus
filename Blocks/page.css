@@ -32,6 +32,9 @@
   margin-top: 0;
 }
 @media screen and (max-width: 320px) {
+  .page__section {
+  }
+
   .page__content {
     max-width: 320px;
     width: 100%;

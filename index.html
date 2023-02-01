@@ -39,7 +39,11 @@
             <p class="profile__info-description">Explorer</p>
           </div>
 
-          <button type="button" class="profile__add-button"></button>
+          <button
+            type="button"
+            class="profile__add-button"
+            id="profile-add-button"
+          ></button>
         </section>
         <section class="cards page__section">
           <ul class="cards__list"></ul>
@@ -48,10 +52,16 @@
 
       <template id="card-template">
         <li class="cards__item">
+          <button type="button" class="cards__remove-button"></button>
           <img src="" class="cards__image" alt="" />
+
           <div class="cards__description">
             <h2 class="cards__name"></h2>
-            <button type="button" class="cards__like-button"></button>
+            <button
+              type="button"
+              class="cards__like-button"
+              id="like-button"
+            ></button>
           </div>
         </li>
       </template>
@@ -60,6 +70,9 @@
         <p class="page__footer-name">© 2022 Around The U.S.</p>
       </footer>
     </div>
+
+    <!-- Edit mmodal -->
+
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container container">
         <h1 class="modal__heading">Edit profile</h1>
@@ -81,6 +94,45 @@
         ></button>
       </div>
     </div>
+
+    <!-- Add card modal -->
+
+    <div class="modal" id="add-card-modal">
+      <div class="modal__container container">
+        <h1 class="modal__heading">New place</h1>
+        <form class="modal__form form" id="add-card-form">
+          <fieldset class="form__fieldset">
+            <input class="form__input_title" type="text" placeholder="Title" />
+            <input
+              class="form__input_url"
+              type="text"
+              placeholder="Image URL"
+            />
+          </fieldset>
+          <button class="form__save-button" type="submit" id="card-save-button">
+            Save
+          </button>
+        </form>
+        <button
+          class="container__close-button"
+          type="button"
+          id="add-close-button"
+        ></button>
+      </div>
+    </div>
+
+    <div class="modal" id="preview-image-modal">
+      <div class="modal__preview">
+        <img src="" class="modal__preview-image" />
+        <h1 class="modal__preview-footer"></h1>
+        <button
+          class="modal__preview_close-button"
+          type="button"
+          id="preview-close-button"
+        ></button>
+      </div>
+    </div>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>

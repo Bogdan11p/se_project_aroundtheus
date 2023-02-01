@@ -11,13 +11,14 @@
   color: #000000;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .cards__list {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 282px);
-  grid-gap: 20px 17px;
+  grid-gap: 35px 17px;
   padding-left: 0;
   margin-top: 0;
   margin-bottom: 0;
@@ -29,6 +30,26 @@
   height: 282px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  cursor: pointer;
+}
+
+.cards__remove-button {
+  background-image: url(../images/Trash.svg);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 18px;
+  height: 19.3px;
+
+  top: 20px;
+  right: 20px;
+}
+
+.cards__remove-button:hover {
+  opacity: 0.6;
 }
 
 .cards__description {
@@ -52,6 +73,10 @@
   height: 18px;
 
   padding-right: 10px;
+}
+
+.card__like-button_active {
+  background-image: url("../images/Like-active.png");
 }
 
 .cards__like-button:hover {
