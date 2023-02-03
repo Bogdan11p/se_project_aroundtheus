@@ -14,7 +14,7 @@
   transition: opacity 0.3s linear;
 }
 
-.modal__opened {
+.modal_opened {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -126,14 +126,14 @@
   cursor: pointer;
 }
 
-.container__close-button {
+.modal__close-button {
   background-image: url(../images/Close\ Icon.svg);
   border: none;
   background-color: transparent;
   cursor: pointer;
-  position: absolute;
-  bottom: calc(100% + 5px);
-  left: calc(100% + 5px);
+  position: relative;
+  bottom: calc(100% + 75px);
+  left: calc(100% + 40px);
   width: 40px;
   height: 40px;
   background-repeat: no-repeat;
@@ -158,20 +158,6 @@
   line-height: 15px;
 
   color: #ffffff;
-}
-
-.modal__preview-close-button {
-  background-image: url(../images/Close\ Icon.svg);
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  position: relative;
-  bottom: calc(100% + 80px);
-  left: calc(100% + 5px);
-  width: 40px;
-  height: 40px;
-  background-repeat: no-repeat;
-  background-size: contain;
 }
 
 @media screen and (max-width: 320px) {
