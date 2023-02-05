@@ -64,7 +64,6 @@ function renderCard(cardData, wrapper) {
 }
 
 function openPopup(popup) {
-  console.log(popup);
   popup.classList.add("modal_opened");
 }
 
@@ -91,6 +90,7 @@ function getCardElement(cardData) {
     openPopup(previewImageModal);
     previewImageZoom.src = cardData.link;
     previewImageFooter.textContent = cardData.name;
+    previewImageZoom.alt = cardData.name;
   });
 
   cardTitleEl.textContent = cardData.name;
@@ -105,7 +105,7 @@ function handleProfileEditSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closePopup();
+  closePopup(profileEditModal);
 }
 
 function handleNewCardSubmit(evt) {
@@ -115,7 +115,7 @@ function handleNewCardSubmit(evt) {
   renderCard({ name, link }, cardListEl);
   cardTitleInput.value = "";
   cardUrlInput.value = "";
-  closePopup();
+  closePopup(addNewCardModal);
 }
 
 /*Event Listeners*/
