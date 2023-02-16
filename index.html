@@ -76,14 +76,28 @@
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container container">
         <h1 class="modal__heading">Edit profile</h1>
-        <form class="modal__form form">
+        <form class="modal__form form" id="edit-form">
           <fieldset class="form__fieldset">
-            <input class="form__input-name" type="text" placeholder="Name" />
             <input
-              class="form__input-description"
+              class="form__input form__input-name popup__input_type_name"
+              type="text"
+              placeholder="Name"
+              required
+              minlength="2"
+              maxlength="40"
+              id="owner-name"
+            />
+            <span class="popup__error" id="owner-name-error"></span>
+            <input
+              class="form__input form__input-description popup__input_type_description"
               type="text"
               placeholder="Description"
+              required
+              minlength="2"
+              maxlength="200"
+              id="owner-description"
             />
+            <span class="popup__error" id="owner-description-error"></span>
           </fieldset>
           <button class="form__save-button" type="submit">Save</button>
         </form>
@@ -102,12 +116,24 @@
         <h1 class="modal__heading">New place</h1>
         <form class="modal__form form" id="add-card-form">
           <fieldset class="form__fieldset">
-            <input class="form__input-title" type="text" placeholder="Title" />
             <input
-              class="form__input-url"
+              class="form__input form__input-title"
               type="text"
-              placeholder="Image URL"
+              placeholder="Title"
+              id="newcard-name"
+              required
+              minlength="1"
+              maxlength="30"
             />
+            <span class="popup__error" id="newcard-name-error"></span>
+            <input
+              class="form__input form__input-url"
+              type="url"
+              placeholder="Image URL"
+              id="newcard-url"
+              required
+            />
+            <span class="popup__error" id="newcard-url-error"></span>
           </fieldset>
           <button class="form__save-button" type="submit" id="card-save-button">
             Save
@@ -134,5 +160,6 @@
     </div>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
   </body>
 </html>
