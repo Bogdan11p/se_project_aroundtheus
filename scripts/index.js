@@ -34,7 +34,10 @@ const cardTitleInput = addCardFormElement.querySelector(".form__input-title");
 const cardUrlInput = addCardFormElement.querySelector(".form__input-url");
 const newCardAddSaveButton =
   addCardFormElement.querySelector("#card-save-button");
+const addNewCardForm = addNewCardModal.querySelector(".modal__form");
 
+const addNewCardSubmitButton =
+  addNewCardForm.querySelector(".form__save-button");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileCloseButton = document.querySelector("#profile-close-button");
@@ -55,7 +58,7 @@ const previewImageFooter = document.querySelector(".modal__preview-footer");
 const previewImageModalCloseButton = document.querySelector(
   "#preview-close-button"
 );
-
+const submitButton = document.querySelector("#card-save-button");
 /*Functions*/
 
 function renderCard(cardData, wrapper) {
@@ -152,6 +155,10 @@ addCardFormElement.addEventListener("submit", handleNewCardSubmit);
 
 // AddCardModal
 addNewCardButton.addEventListener("click", () => {
+  const addNewCardInputs = [
+    ...addNewCardForm.querySelectorAll(".modal__input"),
+  ];
+  toggleButtonState(addNewCardInputs, addNewCardSubmitButton, config);
   openPopup(addNewCardModal);
 });
 
