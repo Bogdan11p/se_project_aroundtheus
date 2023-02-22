@@ -42,7 +42,7 @@ function setEventListeners(formEl, options) {
 }
 
 function hasInvalidInput(inputList) {
-  return !inputList.every((inputEl) => inputEl.validity.valid);
+  return !Array.from(inputList).every((inputEl) => inputEl.validity.valid);
 }
 
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
@@ -56,7 +56,7 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
 }
 
 function enableValidation(options) {
-  const formEls = [...document.querySelectorAll(options.formSelector)];
+  const formEls = Array.from(document.querySelectorAll(options.formSelector));
   formEls.forEach((formEl) => {
     formEl.addEventListener("submit", (evt) => {
       evt.preventDefault();

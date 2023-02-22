@@ -181,5 +181,3 @@ initialCards.forEach((cardData) => {
   const cardView = getCardElement(cardData);
   renderCard(cardData, cardListEl);
 });
-
-console.log(addNewCardInputs);
