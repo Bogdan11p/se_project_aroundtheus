@@ -155,11 +155,20 @@ addCardFormElement.addEventListener("submit", handleNewCardSubmit);
 
 // AddCardModal
 addNewCardButton.addEventListener("click", () => {
-  const addNewCardInputs = [
-    ...addNewCardForm.querySelectorAll(".modal__input"),
-  ];
+  const addNewCardInputs = addNewCardForm.querySelectorAll(".form__input");
   toggleButtonState(addNewCardInputs, addNewCardSubmitButton, config);
+
   openPopup(addNewCardModal);
+});
+
+addNewCardForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = e.target.name.value;
+  const link = e.target.link.value;
+  const cardView = getCardElement(name, link);
+  renderCard(cardView, cardListEl);
+  closePopup(addNewCardModal);
+  addNewCardForm.reset();
 });
 
 newCardCloseButton.addEventListener("click", () => closePopup(addNewCardModal));
@@ -168,4 +177,9 @@ previewImageModalCloseButton.addEventListener("click", () =>
   closePopup(previewImageModal)
 );
 
-initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
+initialCards.forEach((cardData) => {
+  const cardView = getCardElement(cardData);
+  renderCard(cardData, cardListEl);
+});
+
+console.log(addNewCardInputs);
