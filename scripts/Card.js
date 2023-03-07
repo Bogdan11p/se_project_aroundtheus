@@ -9,12 +9,14 @@ class Card {
   _setEventListeners() {
     this._element
       .querySelector(".cards__like-button")
-      .addEventListener("click", this._handleLikeIcon);
+      .addEventListener("click", () => this._handleLikeIcon());
     this._element
       .querySelector(".cards__remove-button")
-      .addEventListener("click", this._handleDeleteCard);
+      .addEventListener("click", () => this._handleDeleteCard());
 
-    cardImageEl.addEventListener("click", () => handlePreviewPicture(cardData));
+    this._element
+      .querySelector(".cards__image")
+      .addEventListener("click", () => this._handlePreviewPicture());
   }
 
   _handleLikeIcon() {}
@@ -26,7 +28,7 @@ class Card {
   _getTemplate() {
     return document
       .querySelector(this._cardSelector)
-      .content.querySelector(".card")
+      .content.querySelector(".cards__item")
       .cloneNode(true);
   }
 
@@ -35,7 +37,7 @@ class Card {
     this._element.querySelector(
       ".cards__image"
     ).style.backgroundImage = `url(${this._link})`;
-    this._element.querySelector("card__title").textContent = this._name;
+    this._element.querySelector(".cards__name").textContent = this._name;
     this._setEventListeners();
   }
 }
