@@ -63,11 +63,12 @@ const previewImageModalCloseButton = document.querySelector(
   "#preview-close-button"
 );
 const cardSubmitButton = document.querySelector("#card-save-button");
+const cardSelector = "#card-template";
 /*Functions*/
 
 function renderCard(cardData, wrapper) {
-  const cardElement = getCardElement(cardData);
-  wrapper.prepend(cardElement);
+  const card = new Card(cardData, cardSelector);
+  wrapper.prepend(card.getView());
 }
 
 function openPopup(popup) {
@@ -96,8 +97,11 @@ const validationSettings = {
 const editFormEl = profileEditModal.querySelector(".modal__form");
 const addFormEl = addNewCardModal.querySelector(".modal__form");
 
-console.log(editFormEl);
-console.log(addFormEl);
+const editFormValidator = new FormValidator(validationSettings, editFormEl);
+const addFormValidator = new FormValidator(validationSettings, editFormEl);
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -106,20 +110,10 @@ function getCardElement(cardData) {
   const likeButton = cardElement.querySelector(".cards__like-button");
   const deleteButton = cardElement.querySelector(".cards__remove-button");
 
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
+  likeButton.addEventListener("click", handleLikeIcon);
+  deleteButton.addEventListener("click", handleDeleteCard);
 
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-
-  cardImageEl.addEventListener("click", () => {
-    openPopup(previewImageModal);
-    previewImageZoom.src = cardData.link;
-    previewImageFooter.textContent = cardData.name;
-    previewImageZoom.alt = cardData.name;
-  });
+  cardImageEl.addEventListener("click", () => handlePreviewPicture(cardData));
 
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
@@ -128,6 +122,21 @@ function getCardElement(cardData) {
 }
 
 /*Event Handlers*/
+
+const handleLikeIcon = (evt) => {
+  evt.target.classList.toggle("card__like-button_active");
+};
+
+const handleDeleteCard = (evt) => {
+  evt.target.closest(".cards").remove();
+};
+
+const handlePreviewPicture = (data) => {
+  previewImageZoom.src = cardData.link;
+  previewImageFooter.textContent = cardData.name;
+  previewImageZoom.alt = cardData.name;
+  openPopup(previewImageModal);
+};
 
 function handleProfileEditSubmit(evt) {
   evt.preventDefault();
