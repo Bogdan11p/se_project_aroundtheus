@@ -41,9 +41,8 @@ function setEventListeners(formEl, options) {
   });
 }
 
-function hasInvalidInput(inputList) {
-  return !Array.from(inputList).every((inputEl) => inputEl.validity.valid);
-}
+function hasInvalidInput(inputList) {}
+return !Array.from(inputList).every((inputEl) => inputEl.validity.valid);
 
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   if (hasInvalidInput(inputEls)) {
