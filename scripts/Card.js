@@ -19,11 +19,22 @@ class Card {
       .addEventListener("click", () => this._handlePreviewPicture());
   }
 
-  _handleLikeIcon() {}
+  _handleLikeIcon() {
+    this._element
+      .querySelector(".cards__like-button")
+      .classList.toggle(".card__like-button_active");
+  }
 
-  _handleDeleteCard() {}
+  _handleDeleteCard() {
+    this._element.remove();
+  }
 
-  _handlePreviewPicture() {}
+  _handlePreviewPicture() {
+    previewImageZoom.src = cardData.link;
+    previewImageFooter.textContent = cardData.name;
+    previewImageZoom.alt = cardData.name;
+    openPopup(previewImageModal);
+  }
 
   _getTemplate() {
     return document
@@ -34,11 +45,10 @@ class Card {
 
   getView() {
     this._element = this._getTemplate();
-    this._element.querySelector(
-      ".cards__image"
-    ).style.backgroundImage = `url(${this._link})`;
+    this._element.querySelector(".cards__image").src = this._link;
     this._element.querySelector(".cards__name").textContent = this._name;
     this._setEventListeners();
+    return this._element;
   }
 }
 
