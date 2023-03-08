@@ -1,3 +1,13 @@
+import { openPopup } from "./index.js";
+
+const previewImageModal = document.querySelector("#preview-image-modal");
+const previewImageZoom = previewImageModal.querySelector(
+  ".modal__preview-image"
+);
+const previewImageFooter = previewImageModal.querySelector(
+  ".modal__preview-footer"
+);
+
 class Card {
   constructor(cardData, cardSelector) {
     this._name = cardData.name;
@@ -22,7 +32,7 @@ class Card {
   _handleLikeIcon() {
     this._element
       .querySelector(".cards__like-button")
-      .classList.toggle(".card__like-button_active");
+      .classList.toggle("card__like-button_active");
   }
 
   _handleDeleteCard() {
@@ -30,9 +40,9 @@ class Card {
   }
 
   _handlePreviewPicture() {
-    previewImageZoom.src = cardData.link;
-    previewImageFooter.textContent = cardData.name;
-    previewImageZoom.alt = cardData.name;
+    previewImageZoom.src = this._link;
+    previewImageFooter.textContent = this._name;
+    this._element.alt = this._name;
     openPopup(previewImageModal);
   }
 

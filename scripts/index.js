@@ -71,7 +71,7 @@ function renderCard(cardData, wrapper) {
   wrapper.prepend(card.getView());
 }
 
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add("modal_opened");
   document.addEventListener("keydown", closeByEscape);
   document.addEventListener("mousedown", handleOverlay);
