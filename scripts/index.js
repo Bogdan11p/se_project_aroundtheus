@@ -185,7 +185,7 @@ addCardFormElement.addEventListener("submit", handleNewCardSubmit);
 // AddCardModal
 addNewCardButton.addEventListener("click", () => {
   const addNewCardInputs = addNewCardForm.querySelectorAll(".form__input");
-  toggleButtonState(addNewCardInputs, addNewCardSubmitButton, config);
+  //toggleButtonState(addNewCardInputs, addNewCardSubmitButton, config);
 
   openPopup(addNewCardModal);
 });

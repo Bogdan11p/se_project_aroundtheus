@@ -55,7 +55,7 @@ class FormValidator {
       this._submitButton.disabled = false;
     }
   }
-  /*if (this._hasInvalidInput(this, this._inputEls)) {
+  /*if (this._hasInvalidInput) {
       this._submitButton.classList.add(this._inactiveButtonClass);
       this._submitButton.disabled = true;
       return;
@@ -67,10 +67,10 @@ class FormValidator {
     this._inputList.every((input) => input.validity.valid);
 
   _hasInvalidInput() {
-    return this._inputEls.some((inputEl) => !inputEl.validity.valid);
+    return this._inputErrorClass.some((inputEl) => !inputEl.validity.valid);
   }
 
-  _checkInputValidity() {
+  _checkInputValidity(inputEl) {
     if (!inputEl.validity.valid) {
       this._showInputError(inputEl);
     } else {
