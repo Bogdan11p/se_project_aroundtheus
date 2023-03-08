@@ -98,7 +98,7 @@ const editFormEl = profileEditModal.querySelector(".modal__form");
 const addFormEl = addNewCardModal.querySelector(".modal__form");
 
 const editFormValidator = new FormValidator(validationSettings, editFormEl);
-const addFormValidator = new FormValidator(validationSettings, editFormEl);
+const addFormValidator = new FormValidator(validationSettings, addFormEl);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
