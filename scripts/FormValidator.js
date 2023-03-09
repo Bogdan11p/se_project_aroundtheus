@@ -73,6 +73,11 @@ class FormValidator {
 
     this._setEventListeners();
   }
+
+  resetValidation() {
+    this._submitButton.classList.add(this._inactiveButtonClass);
+    this._submitButton.disabled = true;
+  }
 }
 
 const settings = {

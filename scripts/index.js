@@ -134,10 +134,11 @@ function handleNewCardSubmit(evt) {
   evt.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
-  const submitButton = addNewCardForm.querySelector(".form__save-button");
+
   renderCard({ name, link }, cardListEl);
   cardTitleInput.value = "";
   cardUrlInput.value = "";
+  addFormValidator.resetValidation();
 
   closePopup(addNewCardModal);
   evt.target.reset();
