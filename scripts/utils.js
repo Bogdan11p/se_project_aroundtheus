@@ -1,3 +1,8 @@
+import { closeByEscape } from "./index.js";
+import { handleOverlay } from "./index.js";
+import { openPopup } from "./index.js";
+import { closePopup } from "./index.js";
+
 export function closeByEscape(e) {
   if (e.key === "Escape") {
     const modalOpened = document.querySelector(".modal_opened");

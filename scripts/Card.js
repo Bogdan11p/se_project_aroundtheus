@@ -42,7 +42,7 @@ class Card {
   _handlePreviewPicture() {
     previewImageZoom.src = this._link;
     previewImageFooter.textContent = this._name;
-    this._element.alt = this._name;
+    previewImageZoom.alt = this._name;
     openPopup(previewImageModal);
   }
 
@@ -57,6 +57,7 @@ class Card {
     this._element = this._getTemplate();
     this._element.querySelector(".cards__image").src = this._link;
     this._element.querySelector(".cards__name").textContent = this._name;
+    this._element.querySelector(".cards__image").alt = this._name;
     this._setEventListeners();
     return this._element;
   }

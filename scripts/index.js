@@ -123,21 +123,6 @@ function getCardElement(cardData) {
 
 /*Event Handlers*/
 
-const handleLikeIcon = (evt) => {
-  evt.target.classList.toggle("card__like-button_active");
-};
-
-const handleDeleteCard = (evt) => {
-  evt.target.closest(".cards").remove();
-};
-
-const handlePreviewPicture = (data) => {
-  previewImageZoom.src = cardData.link;
-  previewImageFooter.textContent = cardData.name;
-  previewImageZoom.alt = cardData.name;
-  openPopup(previewImageModal);
-};
-
 function handleProfileEditSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
@@ -149,10 +134,13 @@ function handleNewCardSubmit(evt) {
   evt.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
+  const submitButton = addNewCardForm.querySelector(".form__save-button");
   renderCard({ name, link }, cardListEl);
   cardTitleInput.value = "";
   cardUrlInput.value = "";
+
   closePopup(addNewCardModal);
+  evt.target.reset();
 }
 
 function closeByEscape(e) {
@@ -184,9 +172,6 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardFormElement.addEventListener("submit", handleNewCardSubmit);
 // AddCardModal
 addNewCardButton.addEventListener("click", () => {
-  const addNewCardInputs = addNewCardForm.querySelectorAll(".form__input");
-  //toggleButtonState(addNewCardInputs, addNewCardSubmitButton, config);
-
   openPopup(addNewCardModal);
 });
 
