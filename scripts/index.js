@@ -136,9 +136,8 @@ function handleNewCardSubmit(evt) {
   const link = cardUrlInput.value;
 
   renderCard({ name, link }, cardListEl);
-  cardTitleInput.value = "";
-  cardUrlInput.value = "";
-  addFormValidator.resetValidation();
+
+  addFormValidator.disableButton();
 
   closePopup(addNewCardModal);
   evt.target.reset();
