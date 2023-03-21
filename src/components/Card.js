@@ -1,4 +1,4 @@
-import { openPopup } from "./index.js";
+/* import { openPopup } from "../pages/index.js"; */
 
 const previewImageModal = document.querySelector("#preview-image-modal");
 const previewImageZoom = previewImageModal.querySelector(
@@ -43,7 +43,7 @@ class Card {
     previewImageZoom.src = this._link;
     previewImageFooter.textContent = this._name;
     previewImageZoom.alt = this._name;
-    openPopup(previewImageModal);
+    open(previewImageModal);
   }
 
   _getTemplate() {
