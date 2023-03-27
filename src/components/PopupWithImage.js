@@ -6,9 +6,9 @@ export default class PopupWithImage extends Popup {
   }
 
   open(name, link) {
-    this._image = this._popupElement.querySelector("#preview-image-modal");
-    this._popupElement.querySelector(".modal__preview-footer").textContent =
-      name;
+    this._image = document.querySelector("#preview-image-modal");
+
+    this._popup.querySelector(".modal__preview-footer").textContent = name;
     this._image.src = link;
     this._image.alt = name;
     super.open();

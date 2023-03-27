@@ -1,5 +1,3 @@
-/* import { openPopup } from "../pages/index.js"; */
-
 const previewImageModal = document.querySelector("#preview-image-modal");
 const previewImageZoom = previewImageModal.querySelector(
   ".modal__preview-image"
@@ -53,7 +51,7 @@ class Card {
       .cloneNode(true);
   }
 
-  getView() {
+  renderCard() {
     this._element = this._getTemplate();
     this._element.querySelector(".cards__image").src = this._link;
     this._element.querySelector(".cards__name").textContent = this._name;
