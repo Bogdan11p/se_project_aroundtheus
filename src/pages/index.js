@@ -8,7 +8,6 @@ import PopupWithForm from "../components/PopupWithForm";
 
 import Section from "../components/Section";
 import PopupWithImage from "../components/PopupWithImage.js";
-import Popup from "../components/Popup.js";
 
 import {
   initialCards,
@@ -33,15 +32,19 @@ import {
   editFormEl,
   addFormEl,
   cardSelector,
+  modalPictureFooter,
 } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo";
 
 const editFormValidator = new FormValidator(validationSettings, editFormEl);
 const addFormValidator = new FormValidator(validationSettings, addFormEl);
-const editFormPopup = new PopupWithForm("#edit-form", openProfileEditForm);
+const editFormPopup = new PopupWithForm(
+  "#profile-edit-modal",
+  submitEditProfile
+);
 
 const addFormPopup = new PopupWithForm("#add-card-modal", submitAddCard);
-const imagePopup = new PopupWithImage("#preview-image-modal", handleImageClick);
+const imagePopup = new PopupWithImage("#preview-image-modal", imageClick);
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",
   jobSelector: ".profile__info-description",
@@ -59,9 +62,29 @@ section.renderItems();
 
 /*Functions*/
 
-function renderCard(cardData) {
-  const card = new Card(cardData, cardSelector);
-  section.addItem(card.renderCard());
+function imageClick() {
+  previewImageModal.src = initialCards.link;
+  modalPictureFooter.textContent = initialCards.name;
+  previewImageZoom.alt = initialCards.name;
+  /* imagePopup.open(); */
+}
+
+function renderCard(initialCards) {
+  const card = new Card(
+    {
+      initialCards,
+      imageClick: (initialCards) => {
+        const image = {
+          name: initialCards.name,
+          link: initialCards.src,
+        };
+        imagePopup.open(image.name, image.link);
+      },
+    },
+    cardSelector
+  ).renderCard();
+
+  section.addItem(card);
 }
 
 // Validation
@@ -127,15 +150,6 @@ function openProfileEditForm() {
   profileDescriptionInput.value = profileInfo.job;
   editFormValidator.disableButton();
   editFormPopup.open();
-}
-
-/* function renderCard(cardData) {
-  const card = new Card(cardData, cardSelector, handleImageClick).renderCard();
-  section.addItem(card);
-} */
-
-function handleImageClick(name, link) {
-  imagePopup.open(name, link);
 }
 
 function submitEditProfile(inputValues) {

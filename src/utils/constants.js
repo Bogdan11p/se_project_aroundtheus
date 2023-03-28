@@ -71,3 +71,6 @@ export const validationSettings = {
 
 export const editFormEl = profileEditModal.querySelector(".modal__form");
 export const addFormEl = addNewCardModal.querySelector(".modal__form");
+export const modalPictureFooter = document.querySelector(
+  ".modal__preview-footer"
+);

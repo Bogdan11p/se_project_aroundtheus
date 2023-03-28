@@ -2,15 +2,13 @@ const previewImageModal = document.querySelector("#preview-image-modal");
 const previewImageZoom = previewImageModal.querySelector(
   ".modal__preview-image"
 );
-const previewImageFooter = previewImageModal.querySelector(
-  ".modal__preview-footer"
-);
+const modalPictureFooter = document.querySelector(".modal__preview-footer");
 
-class Card {
-  constructor(cardData, cardSelector) {
-    this._name = cardData.name;
-    this._link = cardData.link;
-
+export default class Card {
+  constructor({ initialCards, imageClick }, cardSelector) {
+    this._name = initialCards.name;
+    this._link = initialCards.link;
+    this._imageclick = imageClick;
     this._cardSelector = cardSelector;
   }
 
@@ -22,9 +20,12 @@ class Card {
       .querySelector(".cards__remove-button")
       .addEventListener("click", () => this._handleDeleteCard());
 
-    this._element
-      .querySelector(".cards__image")
-      .addEventListener("click", () => this._handlePreviewPicture());
+    this._element.querySelector(".cards__image").addEventListener("click", () =>
+      this._imageclick({
+        name: this._name,
+        src: this._link,
+      })
+    );
   }
 
   _handleLikeIcon() {
@@ -37,12 +38,12 @@ class Card {
     this._element.remove();
   }
 
-  _handlePreviewPicture() {
+  /* _handlePreviewPicture() {
     previewImageZoom.src = this._link;
-    previewImageFooter.textContent = this._name;
+    modalPictureFooter.textContent = this._name;
     previewImageZoom.alt = this._name;
-    open(previewImageModal);
-  }
+    this._imageclick();
+  } */
 
   _getTemplate() {
     return document
@@ -60,5 +61,3 @@ class Card {
     return this._element;
   }
 }
-
-export default Card;
