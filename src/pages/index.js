@@ -62,13 +62,6 @@ section.renderItems();
 
 /*Functions*/
 
-function imageClick() {
-  previewImageModal.src = initialCards.link;
-  modalPictureFooter.textContent = initialCards.name;
-  previewImageZoom.alt = initialCards.name;
-  /* imagePopup.open(); */
-}
-
 function renderCard(initialCards) {
   const card = new Card(
     {
@@ -143,6 +136,8 @@ previewImageModalCloseButton.addEventListener("click", () =>
 addCardFormElement.addEventListener("submit", handleNewCardSubmit);
 
 // new functions
+
+function imageClick() {}
 
 function openProfileEditForm() {
   const profileInfo = userInfo.getUserInfo();
