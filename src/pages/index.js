@@ -12,27 +12,18 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import {
   initialCards,
   addNewCardButton,
-  addNewCardModal,
-  newCardCloseButton,
-  addCardFormElement,
   cardTitleInput,
   cardUrlInput,
   profileEditButton,
-  profileEditModal,
-  profileCloseButton,
   profileTitle,
   profileDescription,
   profileTitleInput,
   profileDescriptionInput,
-  profileEditForm,
   cardListEl,
-  previewImageModal,
-  previewImageModalCloseButton,
   validationSettings,
   editFormEl,
   addFormEl,
   cardSelector,
-  modalPictureFooter,
 } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo";
 
@@ -44,7 +35,7 @@ const editFormPopup = new PopupWithForm(
 );
 
 const addFormPopup = new PopupWithForm("#add-card-modal", submitAddCard);
-const imagePopup = new PopupWithImage("#preview-image-modal", imageClick);
+const imagePopup = new PopupWithImage("#preview-image-modal");
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",
   jobSelector: ".profile__info-description",
@@ -90,13 +81,6 @@ imagePopup.setEventListeners();
 
 /*Event Handlers*/
 
-function handleProfileEditSubmit(evt) {
-  evt.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
-  editFormPopup.close();
-}
-
 function handleNewCardSubmit(evt) {
   evt.preventDefault();
   const name = cardTitleInput.value;
@@ -115,10 +99,6 @@ profileEditButton.addEventListener("click", () => {
   profileDescriptionInput.value = profileDescription.textContent;
 });
 
-profileCloseButton.addEventListener("click", () => editFormPopup.close());
-
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-
 // AddCardModal
 
 addNewCardButton.addEventListener("click", () => {
@@ -126,26 +106,7 @@ addNewCardButton.addEventListener("click", () => {
   addFormPopup.open();
 });
 
-newCardCloseButton.addEventListener("click", () => addFormPopup.close());
-
-previewImageModal.addEventListener("click", () => imagePopup.open());
-previewImageModalCloseButton.addEventListener("click", () =>
-  imagePopup.close()
-);
-
-addCardFormElement.addEventListener("submit", handleNewCardSubmit);
-
 // new functions
-
-function imageClick() {}
-
-function openProfileEditForm() {
-  const profileInfo = userInfo.getUserInfo();
-  profileTitleInput.value = profileInfo.name;
-  profileDescriptionInput.value = profileInfo.job;
-  editFormValidator.disableButton();
-  editFormPopup.open();
-}
 
 function submitEditProfile(inputValues) {
   userInfo.setUserInfo({
@@ -155,5 +116,5 @@ function submitEditProfile(inputValues) {
 }
 
 function submitAddCard(inputValues) {
-  renderCard({ name: inputValues.place, link: inputValues.url });
+  renderCard(inputValues);
 }

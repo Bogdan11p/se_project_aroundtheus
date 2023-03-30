@@ -1,3 +1,5 @@
+import { profileCloseButton } from "../utils/constants";
+
 export default class Popup {
   constructor({ popupSelector }) {
     this._popup = document.querySelector(popupSelector);
@@ -29,7 +31,7 @@ export default class Popup {
 
   setEventListeners() {
     this._popup.addEventListener("click", (evt) => {
-      if (evt.target.classList.contains("modal__close")) {
+      if (evt.target.classList.contains("modal__close-button")) {
         this.close();
       }
     });
