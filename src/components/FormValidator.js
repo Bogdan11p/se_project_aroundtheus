@@ -1,5 +1,3 @@
-const submitButton = document.querySelector(".form__save-button");
-
 class FormValidator {
   constructor(settings, formElement) {
     this._inputSelector = settings.inputSelector;

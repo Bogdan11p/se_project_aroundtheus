@@ -57,7 +57,7 @@ function renderCard(initialCards) {
   const card = new Card(
     {
       initialCards,
-      imageClick: (initialCards) => {
+      handleImageClick: (initialCards) => {
         const image = {
           name: initialCards.name,
           link: initialCards.src,
@@ -81,22 +81,15 @@ imagePopup.setEventListeners();
 
 /*Event Handlers*/
 
-function handleNewCardSubmit(evt) {
-  evt.preventDefault();
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
-  renderCard({ name, link }, cardListEl);
-  addFormValidator.disableButton();
-  addFormPopup.close();
-  evt.target.reset();
-}
-
 /*Event Listeners*/
 
 profileEditButton.addEventListener("click", () => {
   editFormPopup.open();
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+  /* profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent; */
+  const { job, name } = userInfo.getUserInfo();
+  profileTitleInput.value = name;
+  profileDescriptionInput.value = job;
 });
 
 // AddCardModal
@@ -111,7 +104,7 @@ addNewCardButton.addEventListener("click", () => {
 function submitEditProfile(inputValues) {
   userInfo.setUserInfo({
     name: inputValues.title,
-    job: inputValues.profileDescription,
+    job: inputValues.description,
   });
 }
 
