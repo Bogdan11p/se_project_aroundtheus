@@ -10,13 +10,9 @@ import Section from "../components/Section";
 import PopupWithImage from "../components/PopupWithImage.js";
 
 import {
-  initialCards,
+  cardData,
   addNewCardButton,
-  cardTitleInput,
-  cardUrlInput,
   profileEditButton,
-  profileTitle,
-  profileDescription,
   profileTitleInput,
   profileDescriptionInput,
   cardListEl,
@@ -26,6 +22,7 @@ import {
   cardSelector,
 } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 const editFormValidator = new FormValidator(validationSettings, editFormEl);
 const addFormValidator = new FormValidator(validationSettings, addFormEl);
@@ -43,7 +40,7 @@ const userInfo = new UserInfo({
 
 const section = new Section(
   {
-    items: initialCards,
+    items: cardData,
     renderer: renderCard,
   },
   cardListEl
@@ -51,16 +48,28 @@ const section = new Section(
 
 section.renderItems();
 
+const Api = new api({
+  baseUrl: "https://around.nomoreparties.co/v1/group-12",
+  headers: {
+    authorization: "77fade9c-13b8-4e2e-91f7-b3fcc3cb9570",
+    "Content-Type": "application/json",
+  },
+});
+
+const deleteCardPopup = new PopupWithConfirmation("#delete-card-modal");
+
+deleteCardPopup.setEventListeners();
+
 /*Functions*/
 
-function renderCard(initialCards) {
+function renderCard(cardData) {
   const card = new Card(
     {
-      initialCards,
-      handleImageClick: (initialCards) => {
+      cardData,
+      handleImageClick: (cardData) => {
         const image = {
-          name: initialCards.name,
-          link: initialCards.src,
+          name: cardData.name,
+          link: cardData.src,
         };
         imagePopup.open(image.name, image.link);
       },
