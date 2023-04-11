@@ -32,6 +32,15 @@
   height: 258px;
 }
 
+.modal__delete-container {
+  background-color: #fff;
+  border-radius: 10px;
+  height: 181px;
+  margin: auto;
+  position: relative;
+  width: 430px;
+}
+
 .modal__heading {
   color: black;
   font-family: "Inter", Arial, sans-serif;

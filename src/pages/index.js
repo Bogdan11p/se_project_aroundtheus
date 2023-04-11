@@ -5,7 +5,7 @@ import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 
 import PopupWithForm from "../components/PopupWithForm";
-
+import Api from "../utils/Api.js";
 import Section from "../components/Section";
 import PopupWithImage from "../components/PopupWithImage.js";
 
@@ -19,7 +19,10 @@ import {
   validationSettings,
   editFormEl,
   addFormEl,
+  confirmFormEl,
   cardSelector,
+  deleteCardButton,
+  avatarButton,
 } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
@@ -48,7 +51,7 @@ const section = new Section(
 
 section.renderItems();
 
-const Api = new api({
+const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-12",
   headers: {
     authorization: "77fade9c-13b8-4e2e-91f7-b3fcc3cb9570",
@@ -56,7 +59,11 @@ const Api = new api({
   },
 });
 
-const deleteCardPopup = new PopupWithConfirmation("#delete-card-modal");
+const deleteCardPopup = new PopupWithConfirmation(confirmFormEl);
+
+api.getInitialCards().then((res) => {
+  console.log(res);
+});
 
 deleteCardPopup.setEventListeners();
 
@@ -99,6 +106,12 @@ profileEditButton.addEventListener("click", () => {
   const { job, name } = userInfo.getUserInfo();
   profileTitleInput.value = name;
   profileDescriptionInput.value = job;
+});
+
+// Confirm Modal
+
+deleteCardButton.addEventListener("click", () => {
+  deleteCardPopup.open();
 });
 
 // AddCardModal

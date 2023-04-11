@@ -28,6 +28,8 @@
             alt="Avatar"
             class="profile__image"
           />
+
+          <button class="profile__image-edit" type="button"></button>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -71,10 +73,13 @@
       </footer>
     </div>
 
+    <!-- confrimation modal -->
+
     <div class="modal" id="delete-card-modal">
-      <div class="modal__container container">
-        <h1 class="modal__heading">Are you sure?</h1>
+      <div class="modal__delete-container">
         <form class="modal__form form" id="delete-confirmation-form">
+          <h1 class="modal__heading">Are you sure?</h1>
+
           <button
             class="form__save-button"
             type="submit"
@@ -171,6 +176,8 @@
       </div>
     </div>
 
+    <!-- Preview image modal -->
+
     <div class="modal" id="preview-image-modal">
       <div class="modal__preview">
         <img src="#" alt="modal-preview-img" class="modal__preview-image" />
@@ -183,6 +190,33 @@
       </div>
     </div>
 
+    <!--avatar-change-modal-->
+    <div class="modal" id="avatar-edit-modal">
+      <div class="modal__container-avatar" id="avatar-edit-container">
+        <button class="modal__close-button" id="avatar-edit-close"></button>
+        <form class="modal__form" id="avatar-form">
+          <h2 class="modal__heading">Change profile picture</h2>
+          <fieldset class="form__fieldset">
+            <input
+              class="form__input"
+              name="Avatar"
+              id="avatar-link"
+              type="link"
+              required
+              placeholder="Avatar link"
+            />
+            <span class="form__error" id="avatar-link-error"> </span>
+          </fieldset>
+          <button
+            class="form__save-button"
+            type="submit"
+            id="avatar-save-button"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
     <!-- <script defer src="./scripts/validation.js" type="module"></script> -->
   </body>
 </html>

@@ -10,6 +10,7 @@
   width: 120px;
   border-radius: 50%;
   margin-right: 24px;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .profile__info {
@@ -50,6 +51,16 @@
 .profile__add-button:hover {
   cursor: pointer;
   opacity: 0.6;
+}
+
+.profile__image-edit {
+  background: transparent url(../images/avatarChange.svg) center no-repeat;
+  width: 26px;
+  height: 26px;
+  border: none;
+  left: 50px;
+  position: absolute;
+  cursor: pointer;
 }
 
 .profile__info-description {
