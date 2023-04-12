@@ -23,6 +23,7 @@ import {
   cardSelector,
   deleteCardButton,
   avatarButton,
+  avatarEditModal,
 } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
@@ -66,6 +67,10 @@ api.getInitialCards().then((res) => {
 });
 
 deleteCardPopup.setEventListeners();
+const avatarFormValidator = new FormValidator(
+  validationSettings,
+  avatarEditModal
+);
 
 /*Functions*/
 
@@ -110,9 +115,7 @@ profileEditButton.addEventListener("click", () => {
 
 // Confirm Modal
 
-deleteCardButton.addEventListener("click", () => {
-  deleteCardPopup.open();
-});
+deleteCardButton.addEventListener("click", () => deleteCardPopup.open());
 
 // AddCardModal
 

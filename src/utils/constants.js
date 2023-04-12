@@ -78,4 +78,7 @@ export const modalPictureFooter = document.querySelector(
 );
 export const confirmFormEl = deleteCardModal.querySelector(".modal__form");
 export const deleteCardButton = document.querySelector(".cards__remove-button");
+
+export const avatarEditModal = document.querySelector("#avatar-edit-modal");
+export const profileAvatar = document.querySelector(".profile__image");
 export const avatarButton = document.querySelector(".profile__image-edit");
