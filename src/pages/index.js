@@ -12,7 +12,6 @@ import Section from "../components/Section";
 import PopupWithImage from "../components/PopupWithImage.js";
 
 import {
-  cardData,
   addNewCardButton,
   profileEditButton,
   profileTitleInput,
@@ -110,7 +109,7 @@ api
   .then(([userData, userCards]) => {
     userId = userData._id;
     userInfo.setUserInfo(userData);
-    userInfo.setAvatar(userData.avatar);
+    /* userInfo.setAvatar(userData.avatar); */
     cardSection = new Section(
       {
         items: userCards,
@@ -247,7 +246,7 @@ function openProfileEditForm() {
   editFormPopup.open();
 }
 
-function renderCard(cardData) {
+/* function renderCard(cardData) {
   const card = new Card(
     {
       cardData,
@@ -261,10 +260,7 @@ function renderCard(cardData) {
       userId,
     },
     cardSelector
-  ).generateCard();
-
-  section.addItem(card);
-}
+  ).generateCard(); */
 
 /*  function submitEditProfile(inputValues) {
   userInfo.setUserInfo({

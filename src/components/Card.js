@@ -1,5 +1,13 @@
 export default class Card {
-  constructor(data, userId, cardSelector, handleImageClick, loadingLikeCheck) {
+  constructor(
+    data,
+    userId,
+    cardSelector,
+    handleImageClick,
+    loadingLikeCheck,
+    handleLikeIcon,
+    handleDeleteCard
+  ) {
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
@@ -7,13 +15,13 @@ export default class Card {
     this._handleImageClick = handleImageClick;
     this._handleDeleteCard = handleDeleteCard;
     this._cardSelector = cardSelector;
-    this._id = cardData._id;
+    this._id = data._id;
     this._likes = data.likes;
     /* this._handleDeleteCard = handleDeleteCard;
     this._handleLikeIcon = handleLikeIcon; */
     this._loadingLikeCheck = loadingLikeCheck;
     this._userId = userId;
-    this._userCardOwnerId = cardData["owner"]._id;
+    this._userCardOwnerId = data["owner"]._id;
   }
 
   setCardEventListeners() {
