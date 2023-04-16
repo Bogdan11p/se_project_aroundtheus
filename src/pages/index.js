@@ -1,3 +1,5 @@
+// Import pages
+
 import "../pages/index.css";
 
 import FormValidator from "../components/FormValidator.js";
@@ -24,18 +26,163 @@ import {
   deleteCardButton,
   avatarButton,
   avatarEditModal,
+  profileAvatar,
 } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
+// Import pages
+
+const api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/group-12",
+  headers: {
+    authorization: "77fade9c-13b8-4e2e-91f7-b3fcc3cb9570",
+    "Content-Type": "application/json",
+  },
+});
+
+const userInfo = new UserInfo({
+  nameSelector: ".profile__title",
+  jobSelector: ".profile__info-description",
+  userAvatar: profileAvatar,
+});
+
+function createCard(cardData) {
+  const card = new Card(
+    cardData,
+    userId,
+    "#card-template",
+    (cardName, cardLink) => {
+      imagePopup.open(cardName, cardLink);
+    },
+
+    (cardId) => {
+      deleteCardPopup.open();
+      deleteCardPopup.setSubmitAction(() => {
+        deleteCardPopup.renderLoading(true);
+
+        api
+          .deleteUserCard(cardId)
+          .then(() => {
+            card.deleteCard();
+            deleteCardPopup.renderLoading(false);
+            deleteCardPopup.close();
+          })
+
+          .catch((err) => {
+            console.log(err);
+          })
+
+          .finally(() => {
+            deleteCardPopup.renderLoading(false);
+          });
+      });
+    },
+
+    (cardId) => {
+      if (card.isLiked()) {
+        api
+          .removeCardLikes(cardId)
+          .then((data) => {
+            card.updateLikes(data.likes);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        api
+          .addCardLikes(cardId)
+          .then((data) => {
+            card.updateLikes(data.likes);
+          })
+
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    }
+  );
+  return card;
+}
+
+api
+  .getAPIInfo()
+  .then(([userData, userCards]) => {
+    userId = userData._id;
+    userInfo.setUserInfo(userData);
+    userInfo.setAvatar(userData.avatar);
+    cardSection = new Section(
+      {
+        items: userCards,
+        renderer: (cardData) => {
+          const newCard = createCard(cardData);
+          cardSection.addItem(newCard.generateCard());
+        },
+      },
+      cardListEl
+    );
+    cardSection.renderItems();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+const avatarFormValidator = new FormValidator(
+  validationSettings,
+  avatarEditModal
+);
+
+// API
+
+/*Event Listeners*/
+
+profileEditButton.addEventListener("click", () => {
+  editFormPopup.open();
+});
+
+// Avatar Change Modal
+
+const avatarChangePopup = new PopupWithForm("#avatar-edit-modal", (values) => {
+  avatarChangePopup.renderLoading(true);
+  api
+    .updateProfileAvatar(values.avatar)
+    .then((value) => {
+      userInfo.setUserInfo(value.avatar);
+      avatarChangePopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      avatarChangePopup.renderLoading(false, "Save");
+    });
+});
+
+avatarChangePopup.setEventListeners();
+avatarFormValidator.enableValidation();
+
+// Avatar Change Modal
+
+// Delete Card Modal
+
+const deleteCardPopup = new PopupWithConfirmation("#delete-card-modal");
+let cardSection;
+let userId;
+
+deleteCardPopup.setEventListeners();
+
+// Delete Card Modal
+
+// Profile Edit Modal
+
 const editFormValidator = new FormValidator(validationSettings, editFormEl);
-const addFormValidator = new FormValidator(validationSettings, addFormEl);
+
 const editFormPopup = new PopupWithForm("#profile-edit-modal", (values) => {
   editFormPopup.renderLoading(true);
   api
     .updateProfileInfo(values)
     .then((data) => {
-      userInfo.setAvatar(data);
+      userInfo.setUserInfo(data);
       editFormPopup.close();
     })
     .catch((err) => {
@@ -46,6 +193,16 @@ const editFormPopup = new PopupWithForm("#profile-edit-modal", (values) => {
     });
 });
 
+editFormPopup.setEventListeners();
+editFormValidator.enableValidation();
+editFormValidator.disableButton();
+
+// Profile Edit Modal
+
+// AddCardModal
+
+const addFormValidator = new FormValidator(validationSettings, addFormEl);
+
 const addFormPopup = new PopupWithForm("#add-card-modal", (values) => {
   addFormPopup.renderLoading(true);
   api
@@ -53,7 +210,7 @@ const addFormPopup = new PopupWithForm("#add-card-modal", (values) => {
     .then((cardData) => {
       const card = createCard(cardData);
       addFormPopup.close();
-      cardSection.addItem(card.renderCard());
+      cardSection.addItem(card.generateCard());
     })
     .catch((err) => {
       console.log(err);
@@ -62,59 +219,33 @@ const addFormPopup = new PopupWithForm("#add-card-modal", (values) => {
       addFormPopup.renderLoading(false, "Create");
     });
 });
+
+addNewCardButton.addEventListener("click", () => {
+  addFormValidator.disableButton();
+  addFormPopup.open();
+});
+
+addFormPopup.setEventListeners();
+addFormValidator.enableValidation();
+
+// AddCardModal
+
+// Preview Image Modal
+
 const imagePopup = new PopupWithImage("#preview-image-modal");
-const userInfo = new UserInfo({
-  nameSelector: ".profile__title",
-  jobSelector: ".profile__info-description",
-});
 
-const section = new Section(
-  {
-    items: cardData,
-    renderer: renderCard,
-  },
-  cardListEl
-);
+imagePopup.setEventListeners();
 
-section.renderItems();
+// Preview Image Modal
 
-const api = new Api({
-  baseUrl: "https://around.nomoreparties.co/v1/group-12",
-  headers: {
-    authorization: "77fade9c-13b8-4e2e-91f7-b3fcc3cb9570",
-    "Content-Type": "application/json",
-  },
-});
+// new functions
 
-const deleteCardPopup = new PopupWithConfirmation("#delete-card-modal");
-let cardSection;
-let userId;
-
-deleteCardPopup.setEventListeners();
-const avatarFormValidator = new FormValidator(
-  validationSettings,
-  avatarEditModal
-);
-
-const avatarChangePopup = new PopupWithForm("#avatar-edit-modal", (values) => {
-  avatarChangePopup.renderLoading(true);
-  api
-    .updateProfileAvatar(values.avatar)
-    .then((data) => {
-      userInfo.setUserInfo(data);
-      avatarChangePopup.close();
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      avatarChangePopup.renderLoading(false, "Save");
-    });
-});
-avatarChangePopup.setEventListeners();
-avatarFormValidator.enableValidation();
-
-/*Functions*/
+function openProfileEditForm() {
+  const { name, about } = userInfo.getUserInfo();
+  profileTitleInput.value = name;
+  profileDescriptionInput.value = about;
+  editFormPopup.open();
+}
 
 function renderCard(cardData) {
   const card = new Card(
@@ -127,46 +258,15 @@ function renderCard(cardData) {
         };
         imagePopup.open(image.name, image.link);
       },
+      userId,
     },
     cardSelector
-  ).renderCard();
+  ).generateCard();
 
   section.addItem(card);
 }
 
-// Validation
-
-editFormValidator.enableValidation();
-addFormValidator.enableValidation();
-editFormPopup.setEventListeners();
-addFormPopup.setEventListeners();
-imagePopup.setEventListeners();
-
-/*Event Handlers*/
-
-/*Event Listeners*/
-
-profileEditButton.addEventListener("click", () => {
-  editFormPopup.open();
-  /* profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent; */
-  const { job, name } = userInfo.getUserInfo();
-  profileTitleInput.value = name;
-  profileDescriptionInput.value = job;
-});
-
-// Confirm Modal
-
-// AddCardModal
-
-addNewCardButton.addEventListener("click", () => {
-  addFormValidator.disableButton();
-  addFormPopup.open();
-});
-
-// new functions
-
-function submitEditProfile(inputValues) {
+/*  function submitEditProfile(inputValues) {
   userInfo.setUserInfo({
     name: inputValues.title,
     job: inputValues.description,
@@ -174,5 +274,5 @@ function submitEditProfile(inputValues) {
 }
 
 function submitAddCard(inputValues) {
-  renderCard(inputValues);
-}
+  renderCard(inputValues); 
+}  */
