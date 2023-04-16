@@ -4,7 +4,7 @@ import FormValidator from "../components/FormValidator.js";
 
 import Card from "../components/Card.js";
 
-import PopupWithForm from "../components/PopupWithForm";
+import PopupWithForm from "../components/PopupWithForm.js";
 import Api from "../utils/Api.js";
 import Section from "../components/Section";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -30,12 +30,38 @@ import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 const editFormValidator = new FormValidator(validationSettings, editFormEl);
 const addFormValidator = new FormValidator(validationSettings, addFormEl);
-const editFormPopup = new PopupWithForm(
-  "#profile-edit-modal",
-  submitEditProfile
-);
+const editFormPopup = new PopupWithForm("#profile-edit-modal", (values) => {
+  editFormPopup.renderLoading(true);
+  api
+    .updateProfileInfo(values)
+    .then((data) => {
+      userInfo.setAvatar(data);
+      editFormPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      editFormPopup.renderLoading(false, "Save");
+    });
+});
 
-const addFormPopup = new PopupWithForm("#add-card-modal", submitAddCard);
+const addFormPopup = new PopupWithForm("#add-card-modal", (values) => {
+  addFormPopup.renderLoading(true);
+  api
+    .addNewCard(values)
+    .then((cardData) => {
+      const card = createCard(cardData);
+      addFormPopup.close();
+      cardSection.addItem(card.renderCard());
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      addFormPopup.renderLoading(false, "Create");
+    });
+});
 const imagePopup = new PopupWithImage("#preview-image-modal");
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",
@@ -60,17 +86,33 @@ const api = new Api({
   },
 });
 
-const deleteCardPopup = new PopupWithConfirmation(confirmFormEl);
-
-api.getInitialCards().then((res) => {
-  console.log(res);
-});
+const deleteCardPopup = new PopupWithConfirmation("#delete-card-modal");
+let cardSection;
+let userId;
 
 deleteCardPopup.setEventListeners();
 const avatarFormValidator = new FormValidator(
   validationSettings,
   avatarEditModal
 );
+
+const avatarChangePopup = new PopupWithForm("#avatar-edit-modal", (values) => {
+  avatarChangePopup.renderLoading(true);
+  api
+    .updateProfileAvatar(values.avatar)
+    .then((data) => {
+      userInfo.setUserInfo(data);
+      avatarChangePopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      avatarChangePopup.renderLoading(false, "Save");
+    });
+});
+avatarChangePopup.setEventListeners();
+avatarFormValidator.enableValidation();
 
 /*Functions*/
 
@@ -114,8 +156,6 @@ profileEditButton.addEventListener("click", () => {
 });
 
 // Confirm Modal
-
-deleteCardButton.addEventListener("click", () => deleteCardPopup.open());
 
 // AddCardModal
 
