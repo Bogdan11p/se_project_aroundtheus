@@ -33,11 +33,11 @@ export default class Card {
     });
 
     this._cardImage.addEventListener("click", () => {
-      this._handleImageClick();
+      this._handleImageClick(this._name, this._link);
     });
   }
 
-  /*  _handleImageClick() {
+  /* _handleImageClick() {
     this._handleCardClick(this._name, this._link);
   } */
 

@@ -51,6 +51,7 @@ function createCard(cardData) {
     cardData,
     userId,
     "#card-template",
+
     (cardName, cardLink) => {
       imagePopup.open(cardName, cardLink);
     },
@@ -144,7 +145,7 @@ profileEditButton.addEventListener("click", () => {
 const avatarChangePopup = new PopupWithForm("#avatar-edit-modal", (values) => {
   avatarChangePopup.renderLoading(true);
   api
-    .updateProfileAvatar(values.avatar)
+    .updateProfileAvatar(value.avatar)
     .then((value) => {
       userInfo.setAvatar(value.avatar);
       avatarChangePopup.close();
@@ -167,6 +168,7 @@ avatarFormValidator.enableValidation();
 const deleteCardPopup = new PopupWithConfirmation("#delete-card-modal");
 let cardSection;
 let userId;
+let handleDeleteCard;
 
 deleteCardPopup.setEventListeners();
 
