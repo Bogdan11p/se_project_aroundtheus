@@ -83,3 +83,8 @@ export const deleteCardButton = document.querySelector(".cards__remove-button");
 export const avatarEditModal = document.querySelector("#avatar-edit-modal");
 export const profileAvatar = document.querySelector(".profile__image");
 export const avatarButton = document.querySelector(".profile__image-edit");
+
+export const profileInfoTitle = document.querySelector(".profile__title");
+export const profileInfoDescription = document.querySelector(
+  ".profile__info-description"
+);

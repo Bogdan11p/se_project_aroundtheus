@@ -26,6 +26,8 @@ import {
   avatarButton,
   avatarEditModal,
   profileAvatar,
+  profileInfoDescription,
+  profileInfoTitle,
 } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
@@ -41,8 +43,8 @@ const api = new Api({
 });
 
 const userInfo = new UserInfo({
-  userName: profileTitleInput,
-  userJob: profileDescriptionInput,
+  userName: profileInfoTitle,
+  userJob: profileInfoDescription,
   userAvatar: profileAvatar,
 });
 
@@ -54,29 +56,6 @@ function createCard(cardData) {
 
     (cardName, cardLink) => {
       imagePopup.open(cardName, cardLink);
-    },
-
-    (cardId) => {
-      deleteCardPopup.open();
-      deleteCardPopup.setSubmitAction(() => {
-        deleteCardPopup.renderLoading(true);
-
-        api
-          .deleteUserCard(cardId)
-          .then(() => {
-            card.deleteCard();
-            deleteCardPopup.renderLoading(false);
-            deleteCardPopup.close();
-          })
-
-          .catch((err) => {
-            console.log(err);
-          })
-
-          .finally(() => {
-            deleteCardPopup.renderLoading(false);
-          });
-      });
     },
 
     (cardId) => {
@@ -100,6 +79,29 @@ function createCard(cardData) {
             console.log(err);
           });
       }
+    },
+
+    (cardId) => {
+      deleteCardPopup.open();
+      deleteCardPopup.setSubmitAction(() => {
+        deleteCardPopup.renderLoading(true);
+
+        api
+          .deleteUserCard(cardId)
+          .then(() => {
+            card.deleteCard();
+            deleteCardPopup.renderLoading(false);
+            deleteCardPopup.close();
+          })
+
+          .catch((err) => {
+            console.log(err);
+          })
+
+          .finally(() => {
+            deleteCardPopup.renderLoading(false);
+          });
+      });
     }
   );
   return card;
@@ -142,7 +144,8 @@ profileEditButton.addEventListener("click", () => {
 
 // Avatar Change Modal
 
-const avatarChangePopup = new PopupWithForm("#avatar-edit-modal", (values) => {
+const avatarChangePopup = new PopupWithForm("#avatar-edit-modal", (value) => {
+  console.log("hey");
   avatarChangePopup.renderLoading(true);
   api
     .updateProfileAvatar(value.avatar)
@@ -179,6 +182,7 @@ deleteCardPopup.setEventListeners();
 const editFormValidator = new FormValidator(validationSettings, editFormEl);
 
 const editFormPopup = new PopupWithForm("#profile-edit-modal", (values) => {
+  console.log("tuey");
   editFormPopup.renderLoading(true);
   api
     .updateProfileInfo(values)
