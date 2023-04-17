@@ -145,7 +145,6 @@ profileEditButton.addEventListener("click", () => {
 // Avatar Change Modal
 
 const avatarChangePopup = new PopupWithForm("#avatar-edit-modal", (value) => {
-  console.log("hey");
   avatarChangePopup.renderLoading(true);
   api
     .updateProfileAvatar(value.avatar)
