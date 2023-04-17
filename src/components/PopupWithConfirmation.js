@@ -16,16 +16,16 @@ class PopupWithConfirmation extends Popup {
 
   renderLoading(isLoading) {
     if (isLoading) {
-      this._confirmButton.textContent = "Loading...";
+      this._saveButton.textContent = "Loading...";
     } else {
       this._saveButton.textContent = "Yes";
     }
   }
 
-  _handleSubmit(e) {
+  /* _handleSubmit(e) {
     e.preventDefault();
     this._handleSubmit();
-  }
+  } */
 
   setEventListeners() {
     super.setEventListeners();

@@ -97,3 +97,12 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+.card__likes-counter {
+  position: absolute;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.2;
+  margin: 40px 0 0 228px;
+  padding: 0;
+}

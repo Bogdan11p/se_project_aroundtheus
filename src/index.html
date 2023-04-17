@@ -81,7 +81,7 @@
     <!-- confrimation modal -->
 
     <div class="modal" id="delete-card-modal">
-      <div class="modal__delete-container">
+      <div class="modal__container container">
         <form class="modal__form form" id="delete-confirmation-form">
           <h1 class="modal__heading">Are you sure?</h1>
 
@@ -197,10 +197,14 @@
 
     <!--avatar-change-modal-->
     <div class="modal" id="avatar-edit-modal">
-      <div class="modal__container-avatar" id="avatar-edit-container">
-        <button class="modal__close-button" id="avatar-edit-close"></button>
+      <div
+        class="modal__container modal__container-avatar"
+        id="avatar-edit-container"
+      >
         <form class="modal__form" id="avatar-form">
-          <h2 class="modal__heading">Change profile picture</h2>
+          <h2 class="modal__heading" id="modal-avatar-heading">
+            Change profile picture
+          </h2>
           <fieldset class="form__fieldset">
             <input
               class="form__input"
@@ -220,6 +224,7 @@
             Save
           </button>
         </form>
+        <button class="modal__close-button" id="avatar-edit-close"></button>
       </div>
     </div>
     <!-- <script defer src="./scripts/validation.js" type="module"></script> -->

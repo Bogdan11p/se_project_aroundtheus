@@ -30,11 +30,14 @@ export default class Api {
     return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }
 
-  updateProfileInfo(userInfo) {
+  updateProfileInfo(userData) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify(userInfo),
+      body: JSON.stringify({
+        name: userData.name,
+        about: userData.about,
+      }),
     }).then(this._checkResponse);
   }
 

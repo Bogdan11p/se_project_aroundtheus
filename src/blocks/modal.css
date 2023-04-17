@@ -32,6 +32,10 @@
   height: 258px;
 }
 
+#modal__container-avatar {
+  height: 272px;
+}
+
 .modal__delete-container {
   background-color: #fff;
   border-radius: 10px;

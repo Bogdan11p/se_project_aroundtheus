@@ -41,8 +41,8 @@ const api = new Api({
 });
 
 const userInfo = new UserInfo({
-  nameSelector: ".profile__title",
-  jobSelector: ".profile__info-description",
+  userName: profileTitleInput,
+  userJob: profileDescriptionInput,
   userAvatar: profileAvatar,
 });
 
@@ -109,7 +109,7 @@ api
   .then(([userData, userCards]) => {
     userId = userData._id;
     userInfo.setUserInfo(userData);
-    /* userInfo.setAvatar(userData.avatar); */
+    userInfo.setAvatar(userData.avatar);
     cardSection = new Section(
       {
         items: userCards,
@@ -146,7 +146,7 @@ const avatarChangePopup = new PopupWithForm("#avatar-edit-modal", (values) => {
   api
     .updateProfileAvatar(values.avatar)
     .then((value) => {
-      userInfo.setUserInfo(value.avatar);
+      userInfo.setAvatar(value.avatar);
       avatarChangePopup.close();
     })
     .catch((err) => {
@@ -219,6 +219,10 @@ const addFormPopup = new PopupWithForm("#add-card-modal", (values) => {
     });
 });
 
+avatarButton.addEventListener("click", () => {
+  avatarChangePopup.open();
+});
+
 addNewCardButton.addEventListener("click", () => {
   addFormValidator.disableButton();
   addFormPopup.open();
@@ -245,22 +249,6 @@ function openProfileEditForm() {
   profileDescriptionInput.value = about;
   editFormPopup.open();
 }
-
-/* function renderCard(cardData) {
-  const card = new Card(
-    {
-      cardData,
-      handleImageClick: (cardData) => {
-        const image = {
-          name: cardData.name,
-          link: cardData.src,
-        };
-        imagePopup.open(image.name, image.link);
-      },
-      userId,
-    },
-    cardSelector
-  ).generateCard(); */
 
 /*  function submitEditProfile(inputValues) {
   userInfo.setUserInfo({
