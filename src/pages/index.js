@@ -31,6 +31,7 @@ import {
 } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
+import { data } from "autoprefixer";
 
 // Import pages
 
@@ -148,8 +149,8 @@ const avatarChangePopup = new PopupWithForm("#avatar-edit-modal", (value) => {
   avatarChangePopup.renderLoading(true);
   api
     .updateProfileAvatar(value.avatar)
-    .then((value) => {
-      userInfo.setAvatar(value.avatar);
+    .then((cardData) => {
+      userInfo.setAvatar(cardData);
       avatarChangePopup.close();
     })
     .catch((err) => {
@@ -170,7 +171,6 @@ avatarFormValidator.enableValidation();
 const deleteCardPopup = new PopupWithConfirmation("#delete-card-modal");
 let cardSection;
 let userId;
-let handleDeleteCard;
 
 deleteCardPopup.setEventListeners();
 
