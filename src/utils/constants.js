@@ -51,7 +51,7 @@ export const profileDescriptionInput = document.querySelector(
 );
 
 export const profileEditForm = profileEditModal.querySelector(".modal__form");
-export const cardListEl = document.querySelector(".cards__list");
+export const itemListEl = document.querySelector(".cards__list");
 export const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 export const previewImageModal = document.querySelector("#preview-image-modal");

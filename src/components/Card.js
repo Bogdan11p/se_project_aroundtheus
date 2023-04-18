@@ -28,7 +28,6 @@ export default class Card {
     });
 
     this._deleteButton.addEventListener("click", () => {
-      console.log("hey");
       this._handleDeleteCard(this._id);
     });
 

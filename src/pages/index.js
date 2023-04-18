@@ -16,7 +16,7 @@ import {
   profileEditButton,
   profileTitleInput,
   profileDescriptionInput,
-  cardListEl,
+  itemListEl,
   validationSettings,
   editFormEl,
   addFormEl,
@@ -91,7 +91,7 @@ function createCard(cardData) {
           .deleteUserCard(cardId)
           .then(() => {
             card.deleteCard();
-            deleteCardPopup.renderLoading(false);
+
             deleteCardPopup.close();
           })
 
@@ -122,7 +122,7 @@ api
           cardSection.addItem(newCard.generateCard());
         },
       },
-      cardListEl
+      itemListEl
     );
     cardSection.renderItems();
   })
@@ -139,10 +139,11 @@ const avatarFormValidator = new FormValidator(
 
 /*Event Listeners*/
 
-profileEditButton.addEventListener("click", () => {
-  editFormPopup.open();
-});
+profileEditButton.addEventListener("click", openProfileEditForm);
 
+/*  editFormPopup.open();
+});
+ */
 // Avatar Change Modal
 
 const avatarChangePopup = new PopupWithForm("#avatar-edit-modal", (value) => {
@@ -181,7 +182,6 @@ deleteCardPopup.setEventListeners();
 const editFormValidator = new FormValidator(validationSettings, editFormEl);
 
 const editFormPopup = new PopupWithForm("#profile-edit-modal", (values) => {
-  console.log("tuey");
   editFormPopup.renderLoading(true);
   api
     .updateProfileInfo(values)
@@ -199,7 +199,6 @@ const editFormPopup = new PopupWithForm("#profile-edit-modal", (values) => {
 
 editFormPopup.setEventListeners();
 editFormValidator.enableValidation();
-editFormValidator.disableButton();
 
 // Profile Edit Modal
 
@@ -249,9 +248,10 @@ imagePopup.setEventListeners();
 // new functions
 
 function openProfileEditForm() {
-  const { name, about } = userInfo.getUserInfo();
+  const { name, job } = userInfo.getUserInfo();
   profileTitleInput.value = name;
-  profileDescriptionInput.value = about;
+  profileDescriptionInput.value = job;
+  editFormValidator.disableButton();
   editFormPopup.open();
 }
 
