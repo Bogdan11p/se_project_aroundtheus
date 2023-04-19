@@ -38,18 +38,6 @@
   height: 272px;
 }
 
-#avatar-form {
-  padding: 36px;
-}
-
-/* #delete-card-modal {
-  height: 181px;
-} */
-
-#delete-confirmation-form {
-  padding: 36px;
-}
-
 .modal__container-delete {
   background-color: #fff;
   border-radius: 10px;

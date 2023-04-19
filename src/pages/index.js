@@ -150,8 +150,8 @@ const avatarChangePopup = new PopupWithForm("#avatar-edit-modal", (value) => {
   avatarChangePopup.renderLoading(true);
   api
     .updateProfileAvatar(value.avatar)
-    .then((cardData) => {
-      userInfo.setAvatar(cardData);
+    .then((avatar) => {
+      userInfo.setAvatar(value.avatar);
       avatarChangePopup.close();
     })
     .catch((err) => {
