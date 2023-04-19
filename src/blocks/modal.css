@@ -71,15 +71,7 @@
   padding-bottom: 40px;
 }
 
-.popup__input_type_error {
-  border-bottom: solid 1px #ff0000;
-}
-
-.popup__error_visible {
-  color: #ff0000;
-}
-
-.popup__button_disabled {
+.form__save-button_disabled {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
@@ -133,23 +125,7 @@
   }
 
   .modal__heading {
-    padding-bottom: 75px;
-  }
-
-  .form__input-name {
-    width: 238px;
-  }
-
-  .form__input_title {
-    width: 238px;
-  }
-
-  .form__input_url {
-    width: 238px;
-  }
-
-  .form__input-description {
-    width: 238px;
+    padding-bottom: 55px;
   }
 
   .form__save-button {
@@ -157,7 +133,7 @@
     border-radius: 2px;
   }
 
-  .container__close-button {
+  .modal__close-button {
     position: absolute;
     bottom: calc(100% + 13px);
     left: calc(100% - 30px);
@@ -176,18 +152,10 @@
     width: 240px;
     height: 299px;
   }
-
-  .modal__preview_close-button {
-    position: relative;
-    bottom: calc(100% + 67px);
-    left: calc(100% - 3.57px);
-    width: 30px;
-    height: 30px;
-  }
 }
 
 @media screen and (max-width: 630px) and (min-width: 321px) {
-  .container__close-button {
+  .modal__close-button {
     position: absolute;
     bottom: calc(100% + 13px);
     left: calc(100% - 30px);

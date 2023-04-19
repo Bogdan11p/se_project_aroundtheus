@@ -224,12 +224,11 @@ const addFormPopup = new PopupWithForm("#add-card-modal", (values) => {
 });
 
 avatarButton.addEventListener("click", () => {
-  avatarFormValidator._toggleButtonState();
+  avatarFormValidator.disableButton();
   avatarChangePopup.open();
 });
 
 addNewCardButton.addEventListener("click", () => {
-  addFormValidator._toggleButtonState();
   addFormValidator.disableButton();
   addFormPopup.open();
 });
@@ -253,7 +252,7 @@ function openProfileEditForm() {
   const { name, job } = userInfo.getUserInfo();
   profileTitleInput.value = name;
   profileDescriptionInput.value = job;
-  editFormValidator._toggleButtonState();
+
   editFormValidator.disableButton();
   editFormPopup.open();
 }

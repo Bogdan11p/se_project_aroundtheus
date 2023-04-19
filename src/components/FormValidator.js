@@ -13,7 +13,6 @@ class FormValidator {
     this._inputList = [...this._form.querySelectorAll(this._inputSelector)];
 
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
-    this._toggleButtonState();
 
     this._inputList.forEach((inputEl) => {
       inputEl.addEventListener("input", (e) => {
@@ -81,9 +80,9 @@ const settings = {
   formSelector: ".modal__form",
   inputSelector: ".form__input",
   submitButtonSelector: ".form__save-button",
-  inactiveButtonClass: "popup__button_disabled",
+  inactiveButtonClass: "form__save-button_disabled",
   inputErrorClass: "form__input_type_error",
-  errorClass: "popup__error_visible",
+  errorClass: "form__error_visible",
 };
 
 export default FormValidator;
