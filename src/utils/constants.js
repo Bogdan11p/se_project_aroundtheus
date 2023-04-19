@@ -65,9 +65,9 @@ export const validationSettings = {
   formSelector: ".modal__form",
   inputSelector: ".form__input",
   submitButtonSelector: ".form__save-button",
-  inactiveButtonClass: "popup__button_disabled",
+  inactiveButtonClass: "form__save-button_disabled",
   inputErrorClass: "form__input_type_error",
-  errorClass: "popup__error_visible",
+  errorClass: "form__error_visible",
 };
 
 export const editFormEl = profileEditModal.querySelector(".modal__form");

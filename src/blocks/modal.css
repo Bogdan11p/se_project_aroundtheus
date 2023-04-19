@@ -26,25 +26,7 @@
   border-radius: 10px;
   position: relative;
   width: 358px;
-  height: 258px;
-}
-
-.modal__container-avatar {
-  background-color: #fff;
-
-  border-radius: 10px;
-  position: relative;
-  width: 430px;
-  height: 272px;
-}
-
-.modal__container-delete {
-  background-color: #fff;
-  border-radius: 10px;
-  height: 181px;
-  margin: auto;
-  position: relative;
-  width: 430px;
+  height: 270px;
 }
 
 .modal__heading {
@@ -75,11 +57,11 @@
   height: 40px;
   background-repeat: no-repeat;
   background-size: contain;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .modal__close-button:hover {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .modal__preview {

@@ -42,6 +42,14 @@
   margin-top: 30px;
 }
 
+.form__error_visible {
+  color: #ff0000;
+}
+
+.form__save-button_disabled {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
 .form__save-button_disabled {
   cursor: default;
 }
