@@ -105,7 +105,7 @@ function createCard(cardData) {
       });
     }
   );
-  return card;
+  return card.generateCard();
 }
 
 api
@@ -119,7 +119,7 @@ api
         items: userCards,
         renderer: (cardData) => {
           const newCard = createCard(cardData);
-          cardSection.addItem(newCard.generateCard());
+          cardSection.addItem(newCard);
         },
       },
       itemListEl
@@ -213,7 +213,7 @@ const addFormPopup = new PopupWithForm("#add-card-modal", (values) => {
     .then((cardData) => {
       const card = createCard(cardData);
       addFormPopup.close();
-      cardSection.addItem(card.generateCard());
+      cardSection.addItem(card);
     })
     .catch((err) => {
       console.log(err);
@@ -224,10 +224,12 @@ const addFormPopup = new PopupWithForm("#add-card-modal", (values) => {
 });
 
 avatarButton.addEventListener("click", () => {
+  avatarFormValidator._toggleButtonState();
   avatarChangePopup.open();
 });
 
 addNewCardButton.addEventListener("click", () => {
+  addFormValidator._toggleButtonState();
   addFormValidator.disableButton();
   addFormPopup.open();
 });
@@ -251,6 +253,7 @@ function openProfileEditForm() {
   const { name, job } = userInfo.getUserInfo();
   profileTitleInput.value = name;
   profileDescriptionInput.value = job;
+  editFormValidator._toggleButtonState();
   editFormValidator.disableButton();
   editFormPopup.open();
 }
