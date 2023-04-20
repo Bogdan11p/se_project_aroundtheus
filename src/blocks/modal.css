@@ -26,7 +26,7 @@
   border-radius: 10px;
   position: relative;
   width: 358px;
-  height: 270px;
+  /* height: 270px; */
 }
 
 .modal__heading {
@@ -38,7 +38,7 @@
   line-height: 29px;
   margin-top: 0;
   margin-bottom: 0;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 
 .form__save-button_disabled {
@@ -50,9 +50,9 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  position: relative;
-  bottom: calc(100% + 75px);
-  left: calc(100% + 40px);
+  position: absolute;
+  top: -40px;
+  right: -40px;
   width: 40px;
   height: 40px;
   background-repeat: no-repeat;
@@ -65,13 +65,13 @@
 }
 
 .modal__preview {
-  height: 566px;
+  /* height: 566px; */
   width: 433px;
   padding-top: 90px;
   padding-bottom: 90px;
 }
 .modal__preview-image {
-  height: 566px;
+  /* height: 566px; */
   width: 433px;
 }
 
